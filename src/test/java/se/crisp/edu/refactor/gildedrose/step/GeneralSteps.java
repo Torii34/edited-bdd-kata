@@ -1,19 +1,19 @@
 package se.crisp.edu.refactor.gildedrose.step;
 
-import cucumber.api.java.Before;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import se.crisp.edu.refactor.gildedrose.GildedRose;
 import se.crisp.edu.refactor.gildedrose.Inventory;
 import se.crisp.edu.refactor.gildedrose.Item;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GeneralSteps {
 
-    private static final String SOME_NAME = "some name";
+//    private static final String SOME_NAME = "some name";
     private GildedRose gildedRose;
     private Inventory inventory;
     private Item currentItem;
@@ -24,42 +24,32 @@ public class GeneralSteps {
         gildedRose = new GildedRose(inventory);
     }
 
-    @Given("^an item with quality (\\d+) and sell by date (.*)")
-    public void anItemWithQualityAndSellByDate(int quality, String relativeDay) throws Throwable {
-        currentItem = new Item(SOME_NAME, parseRelativeDay(relativeDay), quality);
+    @Given("^The item \"([^\"]*)\" with quality \"(-?\\d+)\" and sell in \"(-?\\d+)\"$")
+    public void the_item_with_quality_and_sell_in(String itemName, int initialQuality, int initialSellIn) throws Throwable {
+        currentItem = new Item(itemName, initialSellIn, initialQuality);
         inventory.addItem(currentItem);
     }
 
-    @When("^(\\d+) day passed$")
-    public void dayPassed(int days) throws Throwable {
-        for (int n = 0; n < days; n++) {
+    @When("^\"(-?\\d+)\" day passed$")
+    public void day_passed(int daysPassed) throws Throwable {
+        for (int n = 0; n < daysPassed; n++) {
             gildedRose.updateQuality();
+//            System.out.println("Quality by day " + n + " : + " + currentItem.getQuality());
+
+
         }
     }
 
-    @Then("^the item has quality (\\d+)$")
-    public void theItemHasQuality(int quality) throws Throwable {
-        assertEquals(quality, currentItem.quality);
+    @Then("^the item has quality \"(-?\\d+)\"$")
+    public void the_item_has_quality(int expectedQuality) throws Throwable {
+//        System.out.println("Expected quality : " + expectedQuality + ", calculated quality : " + currentItem.quality);
+        assertEquals(expectedQuality, currentItem.quality);
     }
 
-    @And("^the item has sell by date (.*)")
-    public void theItemHasSellByDate(String relativeDay) throws Throwable {
-        assertEquals(parseRelativeDay(relativeDay), currentItem.sellIn);
+    @And("^the item has sell by date \"(-?\\d+)\"$")
+    public void theItemHasSellByDate(int expectedSellIn) throws Throwable {
+//        System.out.println("Expected sell in : " + expectedSellIn + ", calculated sell in : " + currentItem.sellIn);
+        assertEquals(expectedSellIn, currentItem.sellIn);
     }
-
-
-    private int parseRelativeDay(String relativeDay) {
-        if (relativeDay.equalsIgnoreCase("yesterday")) {
-            return -1;
-        }
-        if (relativeDay.equalsIgnoreCase("today")) {
-            return 0;
-        }
-        if (relativeDay.equalsIgnoreCase("tomorrow")) {
-            return 1;
-        }
-        throw new IllegalArgumentException(relativeDay + " is not understood.");
-    }
-
 }
 
