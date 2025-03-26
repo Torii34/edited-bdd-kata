@@ -16,7 +16,7 @@ specification.
 1. Read the first specification in [general.feature](src/test/resources/specification/general.feature).
 Control-click on a line to find the steps definition, the glue code.
 1. Add scenarios for all requirements.
-1. Run the [RunCucumberTest](src/test/java/RunCucumberTest.java) with coverage and see if you cover all code.
+1. Run the [RunnerTest](src/test/java/RunnerTest.java) with coverage and see if you cover all code.
 1. Throw away the legacy implementation and rewrite it from scratch. All specifications should stay the same.
 1. Add scenarios for the new requirement, "Conjured". 
 1. Implement the new requirement.

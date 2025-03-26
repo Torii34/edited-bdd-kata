@@ -1,4 +1,4 @@
-package se.crisp.edu.refactor.gildedrose.step;
+package feature;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -9,7 +9,7 @@ import se.crisp.edu.refactor.gildedrose.GildedRose;
 import se.crisp.edu.refactor.gildedrose.Inventory;
 import se.crisp.edu.refactor.gildedrose.Item;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class GeneralSteps {
 
