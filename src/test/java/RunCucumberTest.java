@@ -3,7 +3,7 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-reports"},
+        plugin = {"pretty", "json:target/cucumber-report.json"},
         features = "src/test/resources/specification/general.feature",
         glue = {"se/crisp/edu/refactor/gildedrose/step"}
 )
