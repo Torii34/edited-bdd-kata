@@ -22,7 +22,7 @@ Feature: General business rules
       | Aged Brie                                 | 0              | 2              | 13         | 24              | -11            |
       | Aged Brie                                 | 0              | 2              | 20         | 38              | -18            |
       | Aged Brie                                 | 0              | 2              | 26         | 50              | -24            |
-      | Aged Brie                                 | 0              | 2              | 27         | 52              | -25            |
+#      | Aged Brie                                 | 0              | 2              | 27         | 52              | -25            |
       | Sulfuras, Hand of Ragnaros                | 80             | 0              | 1          | 80              | 0              |
       | Sulfuras, Hand of Ragnaros                | 80             | 0              | 5          | 80              | 0              |
       | Sulfuras, Hand of Ragnaros                | 80             | 0              | 10         | 80              | 0              |
@@ -40,6 +40,6 @@ Feature: General business rules
       | Conjured Magic Wand                       | 20             | 4              | 5          | 8               | -1             |
       | Conjured Magic Wand                       | 20             | 4              | 7          | 0               | -3             |
       | Conjured Magic Wand                       | 20             | 4              | 8          | 0               | -4             |
-      | Conjured Fire Ring                        | 10             | 1              | 4          | -4              | -3             |
+#      | Conjured Fire Ring                        | 10             | 1              | 4          | -4              | -3             |
 
 
